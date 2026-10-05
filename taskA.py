@@ -36,5 +36,12 @@ def check_number():
             "error": "'number' field must be between 1 and 1,000."
         }), 400
         
-    result = is_prime(number)
-    return jsonify({'is_prime': result})
+    result = {
+        "number": number, 
+        "is_even": number % 2 == 0, 
+        "is_prime": is_prime(number), 
+        "square": number ** 2
+    }
+    return jsonify(result),200      
+if __name__ == "__main__": 
+    app.run(debug=True)
